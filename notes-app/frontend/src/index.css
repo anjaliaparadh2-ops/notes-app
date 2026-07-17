@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===========================================================================
+   GLOBAL THEME CONFIG
+   Change any value below to re-skin the ENTIRE app — colors, fonts, radius.
+   Every component uses Tailwind classes (bg-primary, text-text-main, etc.)
+   that reference these variables, so nothing else needs to be touched.
+   =========================================================================== */
+:root {
+  /* --- Academic color palette: deep blues + slate grays --- */
+  --color-primary: #1e3a5f;        /* deep academic blue - navbar, headings, primary buttons */
+  --color-primary-dark: #14283f;   /* hover/active state for primary */
+  --color-primary-light: #3b5f8a;  /* lighter accents, links */
+  --color-accent: #2563eb;         /* call-to-action accent (buttons, active states) */
+
+  --color-surface: #ffffff;        /* card / content backgrounds */
+  --color-surface-alt: #f4f6f9;    /* page background, slate-tinted */
+  --color-border: #e2e8f0;         /* neat, subtle borders */
+
+  --color-text-main: #1e293b;      /* slate-800 body text */
+  --color-text-muted: #64748b;     /* slate-500 secondary text */
+
+  /* --- Typography --- */
+  --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-heading: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  /* --- Shape --- */
+  --radius-card: 0.75rem;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: var(--color-surface-alt);
+  color: var(--color-text-main);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100%;
+}
+
+/* Smooth focus rings for accessibility without a jarring default outline */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
