@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Point this at your deployed backend URL in production
 // (e.g. via an .env file: VITE_API_BASE_URL=https://api.yourdomain.com/api)
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api";
+const API_BASE_URL ="https://notes-app-1-7572.onrender.com/api";
 
 const api = axios.create({
   baseURL: API_BASE_URL,
