@@ -1,12 +1,25 @@
 require("dotenv").config();
 const express = require("express");
+const rateLimit = require("express-rate-limit");
 const cors = require("cors");
 const path = require("path");
 const connectDB = require("./config/db");
 const notesRoutes = require("./routes/notes");
 
 const app = express();
+const express = require("express");
+const rateLimit = require("express-rate-limit");
+const cors = require("cors");
 
+const app = express();
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  message: "Too many requests. Please try again later.",
+  standardHeaders: true,
+  legacyHeaders: false,
+});
 // ---------------------------------------------------------------------------
 // Connect to MongoDB
 // ---------------------------------------------------------------------------
@@ -17,6 +30,7 @@ connectDB();
 // ---------------------------------------------------------------------------
 app.use(cors()); // In production, restrict this to your frontend's origin
 app.use(express.json({ limit: "1gb" }));
+app.use(limiter);
 app.use(express.urlencoded({ extended: true, limit: "1gb" }));
 
 // Serve uploaded PDFs statically so the frontend can view/download them directly
